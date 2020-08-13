@@ -53,15 +53,8 @@ glob(filePattern, {
 					return stats.report('failureWrite', fileName);
 				}
 
-				fs.unlink(fileName, function (err) {
-					if (err) {
-						console.log(`Could not delete ${fileName}: ${err}`);
-						return stats.report('failureDelete', fileName);
-					}
-
-					console.log(`Converted ${fileName} => ${outputFileName}`);
-					return stats.report('success', fileName);
-				});
+				console.log(`Converted ${fileName} => ${outputFileName}`);
+				return stats.report('success', fileName);
 			});
 		})
 	});
